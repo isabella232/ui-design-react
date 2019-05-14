@@ -8,7 +8,8 @@
   ],
   "types": "lib/main.d.ts",
   "scripts": {
-    "build": "rm ./lib/* && tsc --jsx react --lib es6,dom",
+    "build": "rm ./lib/* && tsc",
+    "dev": "rm ./lib/* && tsc -w",
     "prepublish": "npm run build"
   },
   "keywords": [],
@@ -18,16 +19,10 @@
     "@types/react": "^16.8.17",
     "bootstrap": "^4.3.1",
     "css-loader": "^2.1.1",
-    "dts-css-modules-loader": "^1.0.1",
     "react": "^16.8.6",
     "react-bootstrap": "1.0.0-beta.4",
     "react-dom": "^16.8.6",
     "style-loader": "^0.23.1",
-    "ts-loader": "^6.0.0",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "^3.4.5",
-    "uglifyjs-webpack-plugin": "^2.1.2",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2"
+    "typescript": "^3.4.5"
   }
 }

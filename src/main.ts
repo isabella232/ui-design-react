@@ -1,3 +1,4 @@
-import Pagination from './pagination';
+import { Card, Nav, Navbar, Table } from 'react-bootstrap';
+import Pagination from './components/pagination';
 
-export { Pagination };
+export { Card, Nav, Navbar, Pagination, Table };

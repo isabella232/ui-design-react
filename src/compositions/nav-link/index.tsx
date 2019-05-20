@@ -4,6 +4,7 @@ import { Nav } from 'react-bootstrap';
 import { dFlex, mr3, positionRelative } from '~ui-css';
 
 export interface Props {
+  children?: React.ReactNode;
   icon?: string;
   isActive?: boolean;
   isDisabled?: boolean;
@@ -12,30 +13,30 @@ export interface Props {
   onClick?: () => any;
 }
 
-export default class NavLinkComponent extends React.Component<Props> {
-  public render() {
-    const { isActive, isDisabled = false, icon, path, title } = this.props;
+const NavLinkComponent = (props: Props) => {
+  const { icon, isActive, isDisabled = false, path, title } = props;
 
-    const iconClasses = classNames('material-icons', mr3);
-    const iconElement = icon ? <i className={iconClasses}>{this.props.icon}</i> : null;
-    const navLinkClasses = classNames(dFlex, positionRelative);
+  const iconClasses = classNames('material-icons', mr3);
+  const iconElement = icon ? <i className={iconClasses}>{icon}</i> : null;
+  const navLinkClasses = classNames(dFlex, positionRelative);
 
-    return (
-      <Nav.Link
-        className={navLinkClasses}
-        active={isActive}
-        disabled={isDisabled}
-        href={path}
-        onClick={this.onClick}
-      >
-        {iconElement}
-        <span>{title}</span>
-      </Nav.Link>
-    );
-  }
-
-  private onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    this.props.onClick();
+    props.onClick();
   };
-}
+
+  return (
+    <Nav.Link
+      className={navLinkClasses}
+      active={isActive}
+      disabled={isDisabled}
+      href={path}
+      onClick={onClick}
+    >
+      {iconElement}
+      <span>{title}</span>
+    </Nav.Link>
+  );
+};
+
+export default NavLinkComponent;

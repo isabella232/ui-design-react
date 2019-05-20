@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { Nav } from 'react-bootstrap';
 import { flexColumn, w100 } from '~ui-css';
-import NavLink from '../../compositions/nav-link';
+import { Nav } from '../../main';
 
 export interface Props {
-  defaultOpen?: boolean;
+  children: React.ReactNode;
   icon?: string;
   isActive?: boolean;
   path: string;
@@ -13,40 +12,22 @@ export interface Props {
   onClick?: () => void;
 }
 
-interface State {
-  isOpen: boolean;
-}
+const NavGroup = (props: Props) => {
+  const { children, icon, isActive, onClick, path, title } = props;
+  const subnavClasses = classNames(flexColumn, w100);
+  const navItemGroupClasses = classNames('nav-item-group', { active: isActive });
 
-export default class NavGroup extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      isOpen: this.props.defaultOpen || false,
-    };
-  }
+  return (
+    <Nav.Item className={navItemGroupClasses} as="li">
+      <Nav.Link icon={icon} isActive={isActive} path={path} title={title} onClick={onClick}>
+        {children}
+      </Nav.Link>
 
-  public render() {
-    const { children, icon, isActive, path, title } = this.props;
-    const subnavClasses = classNames(flexColumn, w100);
-    const navItemGroupClasses = classNames('nav-item-group', { active: isActive });
+      <Nav className={subnavClasses} as="ul">
+        {children}
+      </Nav>
+    </Nav.Item>
+  );
+};
 
-    return (
-      <Nav.Item className={navItemGroupClasses} as="li">
-        <NavLink
-          icon={icon}
-          isActive={isActive}
-          path={path}
-          title={title}
-          onClick={this.props.onClick}
-        >
-          {this.props.children}
-        </NavLink>
-
-        {/* Subnav */}
-        <Nav className={subnavClasses} as="ul">
-          {children}
-        </Nav>
-      </Nav.Item>
-    );
-  }
-}
+export default NavGroup;

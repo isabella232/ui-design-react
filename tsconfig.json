@@ -8,7 +8,10 @@
     "jsx": "react",
     "lib": ["es5", "es6", "dom"],
     "noImplicitAny": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": {
+      "~ui-css": ["../saas/services/ui-design/dist/forgerock.css"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]

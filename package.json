@@ -8,19 +8,23 @@
   ],
   "types": "lib/main.d.ts",
   "scripts": {
-    "build": "rm ./lib/* && tsc",
-    "dev": "rm ./lib/* && tsc -w",
+    "build": "rm -rf ./lib/* && tsc",
+    "dev": "rm -rf ./lib/* && tsc -w",
     "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.17",
+    "@types/react-router": "^5.0.0",
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.4",
     "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
     "typescript": "^3.4.5"
   }
 }

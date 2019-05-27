@@ -2,27 +2,31 @@
   "name": "ui-design-react",
   "version": "1.0.0",
   "description": "",
-  "main": "./lib/main.js",
+  "main": "./lib/index.js",
   "files": [
     "*"
   ],
-  "types": "lib/main.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -rf ./lib/* && tsc",
-    "dev": "rm -rf ./lib/* && tsc -w",
-    "prepublish": "npm run build"
+    "dev": "rm -rf ./lib/* && tsc -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "resolutions": {
+    "@types/react": "^16.8.17"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.17",
+    "react": "^16.8.6"
+  },
   "dependencies": {
     "@types/classnames": "^2.2.7",
-    "@types/react": "^16.8.17",
     "@types/react-router": "^5.0.0",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.4",
+    "react-bootstrap": "1.0.0-beta.4",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.0",
     "typescript": "^3.4.5"

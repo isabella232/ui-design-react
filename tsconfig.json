@@ -10,7 +10,7 @@
     "sourceMap": true,
     "target": "es5",
     "paths": {
-      "@styles": ["../../ui-design/_site/src/assets/css/style.css"],
+      "styles": ["../ui-design/styleguide/_site/src/assets/css/style.css.d.ts"],
       "@components/*": ["components/*"]
     }
   },

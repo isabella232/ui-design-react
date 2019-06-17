@@ -6,8 +6,8 @@ import classNames from 'classnames';
 
 export interface Props {
   hasToggle?: boolean;
-  onToggleClick?: () => void;
   variant?: 'light' | 'dark';
+  onToggleClick?: () => void;
 }
 
 function NavbarSidebar({

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import { Nav } from 'react-bootstrap';
 import { BsPrefixProps } from 'react-bootstrap/helpers';
+import * as styles from '@forgerock/ui-design'
 
 export interface Props extends BsPrefixProps<React.ReactType> {
   active?: boolean;
@@ -12,7 +13,7 @@ export interface Props extends BsPrefixProps<React.ReactType> {
 }
 
 const NavItemLink = ({ active, as, hide, label, icon, onClick }: Props) => {
-  const classes = classNames(hide ? 'none' : 'd-flex', { active });
+  const classes = classNames(hide ? 'none' : 'd-flex', { active }, styles.alignItemsCenter);
   return (
     <Nav.Item as={as}>
       <Nav.Link className={classes} onClick={onClick}>

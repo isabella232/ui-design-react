@@ -11,6 +11,8 @@ import {
   Navbar,
   Row,
   Spinner,
+  Tab,
+  Tabs,
 } from 'react-bootstrap';
 import Button from './components/button';
 import MediaDropdown, { Props as MediaDropdownProps } from './compositions/media';
@@ -38,5 +40,7 @@ export {
   Row,
   Sidebar,
   Spinner,
+  Tab,
+  Tabs,
   ListTable,
 };

@@ -9,8 +9,13 @@ interface Props {
   subHeading: string;
 }
 
-function Sidebar({ children, heading, subHeading }: React.PropsWithChildren<Props>) {
-  const sidebarClasses = classNames(styles.sidebar, styles.sidebarDark);
+function Sidebar({
+  children,
+  className,
+  heading,
+  subHeading,
+}: React.PropsWithChildren<Props & {className?: string}>) {
+  const sidebarClasses = classNames(className, styles.sidebar, styles.sidebarDark);
   return (
     <>
       <div className={sidebarClasses}>

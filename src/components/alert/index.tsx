@@ -9,8 +9,8 @@ function AlertComponent(props: AlertProps) {
 }
 
 export interface ShowProps {
-  position: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-  timeout: number;
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  timeout?: number;
 }
 function Show({ children, timeout }: React.PropsWithChildren<ShowProps>) {
   const classes = classNames(styles.fixedBottomLeft);

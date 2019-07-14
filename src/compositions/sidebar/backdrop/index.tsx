@@ -3,11 +3,10 @@ import * as styles from '@forgerock/ui-design';
 import classNames from 'classnames';
 
 interface Props {
-  show: boolean;
   onClick: () => void;
 }
 
-function SidebarBackdrop({ className, show, onClick }: Props & HTMLDivElement) {
+function SidebarBackdrop({ className, onClick }: Props & { className?: string }) {
   const classes = classNames(className, styles.navbarBackdrop);
   return <div className={classes} onClick={onClick} />;
 }

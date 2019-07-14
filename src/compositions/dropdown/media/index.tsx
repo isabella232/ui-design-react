@@ -9,13 +9,19 @@ interface Props {
   subHeading: string;
 }
 
-const CustomMediaDropdown = ({
-  children,
-  onClick,
-}: React.PropsWithChildren<MediaCompositionProps>) => (
-  <MediaComposition media={<img src="/img/avatar.svg" alt="Avatar" />} onClick={onClick}>
-    {children}
-  </MediaComposition>
+const CustomMediaDropdown = React.forwardRef(
+  (
+    { children, onClick }: React.PropsWithChildren<MediaCompositionProps>,
+    ref: React.RefObject<{}>,
+  ) => (
+    <MediaComposition
+      mediaRef={ref}
+      media={<img src="/img/avatar.svg" alt="Avatar" />}
+      onClick={onClick}
+    >
+      {children}
+    </MediaComposition>
+  ),
 );
 
 function DropdownComponent({ heading, subHeading }: Props) {

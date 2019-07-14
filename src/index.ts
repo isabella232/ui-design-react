@@ -1,27 +1,34 @@
 import {
   ButtonGroup,
   ButtonToolbar,
-  Card,
   Col,
   Collapse,
   Container,
   Dropdown,
+  FormControlProps,
   Media,
   Modal,
   Navbar,
   Row,
   Spinner,
   Tab,
+  Table,
   Tabs,
 } from 'react-bootstrap';
+import Alert from './components/alert';
 import Button from './components/button';
-import MediaDropdown, { Props as MediaDropdownProps } from './compositions/media';
+import Card from './components/card';
+import Editor from './components/editor';
+import Form from './components/form';
+import Input from './compositions/input';
+import MediaComposition, { Props as MediaCompositionProps } from './compositions/media';
 import Nav from './components/nav';
 import NavbarSidebar from '../src/compositions/navbar-sidebar';
 import Sidebar from '../src/compositions/sidebar';
 import ListTable from '../src/compositions/table/list';
 
 export {
+  Alert,
   Button,
   ButtonGroup,
   ButtonToolbar,
@@ -30,9 +37,14 @@ export {
   Col,
   Container,
   Dropdown,
+  Editor,
+  Form,
+  FormControlProps,
+  Input,
+  ListTable,
   Media,
-  MediaDropdown,
-  MediaDropdownProps,
+  MediaComposition,
+  MediaCompositionProps,
   Modal,
   Nav,
   Navbar,
@@ -41,6 +53,6 @@ export {
   Sidebar,
   Spinner,
   Tab,
+  Table,
   Tabs,
-  ListTable,
 };

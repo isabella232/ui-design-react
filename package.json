@@ -1,6 +1,6 @@
 {
   "name": "@forgerock/ui-design-react",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "ForgeRock UI React Components",
   "main": "./lib/index.js",
   "files": [
@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@forgerock/ui-design": "0.0.3",
+    "@forgerock/ui-design": "0.0.4",
     "@types/classnames": "^2.2.8",
     "@types/codemirror": "0.0.76",
     "@types/js-beautify": "^1.8.1",
@@ -33,6 +33,5 @@
     "react-router": "^5.0.1",
     "react-transition-group": "^4.1.1",
     "typescript": "^3.5.1"
-  },
-  "devDependencies": {}
+  }
 }

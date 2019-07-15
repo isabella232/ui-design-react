@@ -23,9 +23,9 @@ import Form from './components/form';
 import Input from './compositions/input';
 import MediaComposition, { Props as MediaCompositionProps } from './compositions/media';
 import Nav from './components/nav';
-import NavbarSidebar from '../src/compositions/navbar-sidebar';
-import Sidebar from '../src/compositions/sidebar';
-import ListTable from '../src/compositions/table/list';
+import NavbarSidebar from './compositions/navbar-sidebar';
+import Sidebar from './compositions/sidebar';
+import ListTable from './compositions/table/list';
 
 export {
   Alert,

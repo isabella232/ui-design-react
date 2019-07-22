@@ -42,9 +42,13 @@ function CancelButton({
   );
 }
 
-function SpinnerButton({ children, variant = 'primary' }: React.PropsWithChildren<ButtonProps>) {
+function SpinnerButton({
+  children,
+  className,
+  variant = 'primary',
+}: React.PropsWithChildren<ButtonProps & { className?: string }>) {
   return (
-    <Button variant={variant} disabled={true}>
+    <Button className={className} variant={variant} disabled={true}>
       <Spinner
         className={styles.mr2}
         aria-hidden="true"

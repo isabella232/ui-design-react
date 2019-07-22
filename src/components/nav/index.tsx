@@ -4,7 +4,7 @@ import NavItemDropdown from './nav-item-dropdown';
 import NavItemLink from './nav-item-link';
 import { NavLinkProps } from 'react-bootstrap/NavLink';
 
-function NavComponent(props: React.PropsWithChildren<NavProps>) {
+function NavComponent(props: React.PropsWithChildren<NavProps> & NavProps) {
   return <Nav {...props}>{props.children}</Nav>;
 }
 

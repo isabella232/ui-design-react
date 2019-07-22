@@ -1,6 +1,6 @@
-import * as React from 'react';
 import * as styles from '@forgerock/ui-design';
-import { Card, Table, TableProps } from 'react-bootstrap';
+import * as React from 'react';
+import { Table, TableProps } from 'react-bootstrap';
 
 export interface Props extends TableProps {
   toolbar?: React.ReactElement;
@@ -13,12 +13,12 @@ function ListTableComponent({
   toolbar,
 }: React.PropsWithChildren<Props>) {
   return (
-    <Card>
+    <div>
       {toolbar}
       <Table className={styles.mb0} hover={hover} responsive={responsive}>
         {children}
       </Table>
-    </Card>
+    </div>
   );
 }
 

@@ -22,6 +22,7 @@ import Editor from './components/editor';
 import Form from './components/form';
 import Input from './compositions/input';
 import MediaComposition, { Props as MediaCompositionProps } from './compositions/media';
+import MarkdownEditor from './compositions/markdown-editor';
 import Nav from './components/nav';
 import NavbarSidebar from './compositions/navbar-sidebar';
 import Sidebar from './compositions/sidebar';
@@ -42,6 +43,7 @@ export {
   FormControlProps,
   Input,
   ListTable,
+  MarkdownEditor,
   Media,
   MediaComposition,
   MediaCompositionProps,

@@ -8,11 +8,7 @@
     "noImplicitAny": true,
     "outDir": "./lib",
     "sourceMap": true,
-    "target": "es5",
-    "paths": {
-      "styles": ["../ui-design/styleguide/_site/src/assets/css/style.css.d.ts"],
-      "@components/*": ["components/*"]
-    }
+    "target": "es5"
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]

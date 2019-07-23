@@ -3,11 +3,11 @@ import * as styles from '@forgerock/ui-design';
 import * as classNames from 'classnames';
 import { CardProps, Card, CardImg } from 'react-bootstrap';
 
-interface Props extends CardProps, React.HTMLAttributes<{}> {
+interface CardComponentProps extends CardProps, React.HTMLAttributes<HTMLElement> {
   type?: 'hover';
 }
 
-function CardComponent(props: React.PropsWithChildren<Props>) {
+function CardComponent(props: React.PropsWithChildren<CardComponentProps>) {
   const classes = classNames(props.type && styles.cardHover, props.className);
   return (
     <Card {...props} className={classes}>
@@ -16,22 +16,21 @@ function CardComponent(props: React.PropsWithChildren<Props>) {
   );
 }
 
-interface CardGridProps {
+interface CardGridProps extends CardComponentProps {
+  description: string;
   icon: string;
-  text: string;
   title: string;
-  onClick: () => void;
 }
 
-function CardGrid({ icon, text, title, onClick }: CardGridProps) {
-  const cardClasses = classNames(styles.p3, styles.mb4, styles.flexGrow1);
+function CardGrid({ className, description, icon, id, title, onClick }: CardGridProps) {
+  const cardClasses = classNames(className, styles.p3, styles.mb4, styles.flexGrow1);
   const iconClasses = classNames(styles.mt4, styles.mxAuto, icon);
   return (
-    <CardComponent className={cardClasses} type="hover" onClick={onClick}>
+    <CardComponent className={cardClasses} id={id} type="hover" onClick={onClick}>
       <i className={iconClasses} />
       <Card.Body>
         <h5>{title}</h5>
-        <Card.Text>{text}</Card.Text>
+        <Card.Text>{description}</Card.Text>
       </Card.Body>
     </CardComponent>
   );

@@ -3,19 +3,15 @@ import { Button, ButtonProps, Spinner, ButtonGroup } from 'react-bootstrap';
 import classNames from 'classnames';
 import * as styles from '@forgerock/ui-design';
 
-function ButtonComponent(
-  props: React.PropsWithChildren<ButtonComponentProps & { className?: string }>,
-) {
+interface Props extends React.PropsWithChildren<ButtonProps & React.HTMLAttributes<HTMLElement>> {
+  onClick?: () => void;
+}
+
+function ButtonComponent(props: Props) {
   return <Button {...props}>{props.children}</Button>;
 }
 
-interface IconButtonProps extends ButtonProps {
-  className?: string;
-  icon: string;
-  onClick: () => void;
-}
-
-function IconButton(props: React.PropsWithChildren<IconButtonProps>) {
+function IconButton(props: Props & { icon: string }) {
   const iconClasses = classNames(
     'material-icons-outlined',
     styles.mr3,
@@ -30,11 +26,7 @@ function IconButton(props: React.PropsWithChildren<IconButtonProps>) {
   );
 }
 
-function CancelButton({
-  children,
-  className,
-  onClick,
-}: React.PropsWithChildren<{ className?: string; onClick: () => void }>) {
+function CancelButton({ children, className, onClick }: Props) {
   return (
     <Button className={className} variant="link" onClick={onClick}>
       {children}
@@ -94,10 +86,6 @@ function CheckboxButton({
       </label>
     </ButtonGroup>
   );
-}
-
-interface ButtonComponentProps extends ButtonProps {
-  onClick?: () => void;
 }
 
 ButtonComponent.Cancel = CancelButton;

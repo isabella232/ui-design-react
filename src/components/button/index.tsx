@@ -3,8 +3,9 @@ import { Button, ButtonProps, Spinner, ButtonGroup } from 'react-bootstrap';
 import classNames from 'classnames';
 import * as styles from '@forgerock/ui-design';
 
-interface Props extends React.PropsWithChildren<ButtonProps & React.HTMLAttributes<HTMLElement>> {
-  onClick?: () => void;
+interface Props
+  extends React.PropsWithChildren<ButtonProps & React.HTMLAttributes<HTMLButtonElement>> {
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 function ButtonComponent(props: Props) {
@@ -12,76 +13,63 @@ function ButtonComponent(props: Props) {
 }
 
 function IconButton(props: Props & { icon: string }) {
+  const { children, icon } = props;
   const iconClasses = classNames(
     'material-icons-outlined',
     styles.mr3,
     styles.alignBottom,
     props.className,
   );
+
   return (
     <Button {...props}>
-      <i className={iconClasses}>{props.icon}</i>
-      <span>{props.children}</span>
+      <i className={iconClasses}>{icon}</i>
+      <span>{children}</span>
     </Button>
   );
 }
 
-function CancelButton({ children, className, onClick }: Props) {
+function CancelButton(props: Props) {
+  const { children, variant = 'link', onClick } = props;
   return (
-    <Button className={className} variant="link" onClick={onClick}>
+    <Button {...props} variant={variant} onClick={onClick}>
       {children}
     </Button>
   );
 }
 
-function SpinnerButton({
-  children,
-  className,
-  variant = 'primary',
-}: React.PropsWithChildren<ButtonProps & { className?: string }>) {
+function SpinnerButton(props: Props) {
+  const { children, variant = 'primary' } = props;
   return (
-    <Button className={className} variant={variant} disabled={true}>
-      <Spinner
-        className={styles.mr2}
-        aria-hidden="true"
-        as="span"
-        animation="border"
-        role="status"
-        size="sm"
-      />
+    <Button {...props} variant={variant} disabled={true}>
+      <Spinner className={styles.mr2} as="span" animation="border" role="status" size="sm" />
       {children}
     </Button>
   );
 }
 
-interface CheckboxButtonProps {
-  checked?: boolean;
-  className?: string;
+interface CheckboxButtonProps extends Props {
+  defaultChecked?: boolean;
   onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
 }
 
-function CheckboxButton({
-  children,
-  checked,
-  className,
-  onChange,
-}: React.PropsWithChildren<CheckboxButtonProps>) {
-  const [isChecked, setIsChecked] = React.useState(checked);
-  React.useEffect(() => setIsChecked(checked), [checked]);
+function CheckboxButton({ children, defaultChecked, className, onChange }: CheckboxButtonProps) {
+  const [checked, setChecked] = React.useState(defaultChecked);
+  React.useEffect(() => setChecked(defaultChecked), []);
 
   const labelClasses = classNames(styles.btn, styles.btnOutlineSecondary, {
-    [styles.active]: isChecked,
+    [styles.active]: checked,
   });
 
   const checkboxOnChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setIsChecked(!isChecked);
+    setChecked(!checked);
     onChange(e);
   };
 
   return (
     <ButtonGroup className={className} toggle={true}>
       <label className={labelClasses}>
-        <input type="checkbox" checked={isChecked} onChange={checkboxOnChange} />
+        <input type="checkbox" checked={checked} onChange={checkboxOnChange} />
         {children}
       </label>
     </ButtonGroup>

@@ -8,7 +8,11 @@
     "noImplicitAny": true,
     "outDir": "./lib",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@compositions/*": ["compositions/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]

@@ -18,6 +18,7 @@ import {
 import Alert from './components/alert';
 import Button from './components/button';
 import Card from './components/card';
+import DropdownEllipsis from './compositions/dropdown/ellipsis';
 import Editor from './components/editor';
 import Form from './components/form';
 import Input from './compositions/input';
@@ -38,6 +39,7 @@ export {
   Col,
   Container,
   Dropdown,
+  DropdownEllipsis,
   Editor,
   Form,
   FormControlProps,

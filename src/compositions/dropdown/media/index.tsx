@@ -43,7 +43,7 @@ function DropdownComponent({ heading, subHeading }: Props) {
 
   return (
     <Dropdown className={dropdownClasses}>
-      <Dropdown.Toggle id="media-dropdown" as={CustomMediaDropdown}>
+      <Dropdown.Toggle id="media-dropdown" as={CustomMediaDropdown as any}>
         <h5 className={mediaHeaderClasses}>{heading}</h5>
         <span className={mediaSubHeaderClasses}>{subHeading}</span>
       </Dropdown.Toggle>

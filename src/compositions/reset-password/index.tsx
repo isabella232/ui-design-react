@@ -4,39 +4,40 @@ import * as React from 'react';
 import Form, { ISubmitEvent, IChangeEvent } from 'react-jsonschema-form';
 import Alert from '../../components/alert';
 import Card from '../../components/card';
-import { schema, uiSchema } from '../../compositions/sign-in/schema';
+import { schema, uiSchema } from '../../compositions/reset-password/schema';
 import Submit from '../../compositions/submit';
 import { transformErrors } from '../../forms/errors';
 import { BaseInput } from '../../forms/widgets/input';
+import { validate, passwordPolicy } from '../../forms/validations/password';
 
 export interface Props {
   buttonLabel?: string;
   className?: string;
   error?: string;
-  formData?: SignInModel;
+  formData?: ResetPasswordModel;
   id?: string;
   logo?: JSX.Element;
   pending?: boolean;
   title?: string;
-  onChange?: (formData: SignInModel) => void;
-  onSubmit: (formData: SignInModel) => void;
+  onChange?: (formData: ResetPasswordModel) => void;
+  onSubmit: (formData: ResetPasswordModel) => void;
 }
 
-export interface SignInModel {
-  email: string;
-  password?: string;
+export interface ResetPasswordModel {
+  password: string;
+  token: string;
 }
 
-function SignIn(props: Props) {
+function ResetPassword(props: Props) {
   const {
-    buttonLabel = 'Sign In',
+    buttonLabel = 'Reset Password',
     className,
     error,
     formData,
     id,
     logo,
     pending,
-    title = 'Sign In',
+    title = 'Reset Your Password',
     onChange,
     onSubmit,
   } = props;
@@ -48,7 +49,6 @@ function SignIn(props: Props) {
     styles.pl5,
   );
   const bodyClasses = classNames(styles.pr5, styles.pb5, styles.pl5);
-  const footerClasses = classNames(styles.textCenter, styles.mt4);
   return (
     <Card className={className} id={id} style={{ width: 420 }}>
       <Card.Header className={headerClasses}>
@@ -64,25 +64,27 @@ function SignIn(props: Props) {
           showErrorList={false}
           transformErrors={transformErrors}
           uiSchema={uiSchema}
+          validate={(formData, errors) => {
+            const isValid = validate(formData.password, passwordPolicy);
+            !isValid && errors.password.addError('Password does not meet criteria');
+            return errors;
+          }}
           widgets={{ BaseInput }}
-          onChange={(e: IChangeEvent<SignInModel>) => onChange && onChange(e.formData)}
-          onSubmit={(e: ISubmitEvent<SignInModel>) => onSubmit(e.formData)}
+          onChange={(e: IChangeEvent<ResetPasswordModel>) => onChange && onChange(e.formData)}
+          onSubmit={(e: ISubmitEvent<ResetPasswordModel>) => onSubmit(e.formData)}
         >
           <Submit
             className={styles.w100}
-            label="Sign In"
-            pendingLabel="Signing In..."
+            label={buttonLabel}
+            pendingLabel="Sending..."
             pending={pending}
           >
             {buttonLabel}
           </Submit>
         </Form>
-        <div className={footerClasses}>
-          <a href="/forgot-password">Forgot password?</a>
-        </div>
       </Card.Body>
     </Card>
   );
 }
 
-export default SignIn;
+export default ResetPassword;

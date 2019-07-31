@@ -126,35 +126,33 @@ Input.Copy = ({ id, label, type, value, onChange }: Props) => {
   );
 };
 
-Input.Password = ({ disabled, id, isInvalid, label, readOnly, value, onChange }: Props) => {
+Input.Password = ({ disabled, id, isInvalid, label, readOnly, value, onChange }: any) => {
   const [isHidden, setIsHidden] = React.useState(true);
   const buttonClasses = classNames(styles.btn, styles.btnOutlineSecondary);
   const iconClasses = classNames(styles.materialIcons, 'material-icons-outlined');
   return (
-    <Form.Group>
-      <Form.LabelGroup className={styles.formLabelGroupPassword}>
-        <Form.LabelGroupInput>
-          <Input
-            autoComplete="new-password"
-            className={styles.alignSelfStart}
-            disabled={disabled}
-            id={id}
-            isInvalid={isInvalid || false}
-            label={label}
-            placeholder={label}
-            readOnly={readOnly}
-            type={isHidden ? 'password' : 'text'}
-            value={value as string}
-            onChange={onChange}
-          />
-        </Form.LabelGroupInput>
-        <InputGroup.Append>
-          <Button className={buttonClasses} onClick={() => setIsHidden(!isHidden)}>
-            <i className={iconClasses}>{isHidden ? 'visibility' : 'visibility_off'}</i>
-          </Button>
-        </InputGroup.Append>
-      </Form.LabelGroup>
-    </Form.Group>
+    <Form.LabelGroup className={styles.formLabelGroupPassword}>
+      <Form.LabelGroupInput>
+        <Input
+          autoComplete="new-password"
+          className={styles.alignSelfStart}
+          disabled={disabled}
+          id={id}
+          isInvalid={isInvalid || false}
+          label={label}
+          placeholder={label}
+          readOnly={readOnly}
+          type={isHidden ? 'password' : 'text'}
+          value={value as string}
+          onChange={onChange}
+        />
+      </Form.LabelGroupInput>
+      <InputGroup.Append>
+        <Button className={buttonClasses} onClick={() => setIsHidden(!isHidden)}>
+          <i className={iconClasses}>{isHidden ? 'visibility' : 'visibility_off'}</i>
+        </Button>
+      </InputGroup.Append>
+    </Form.LabelGroup>
   );
 };
 

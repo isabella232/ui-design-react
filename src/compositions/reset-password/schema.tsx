@@ -6,12 +6,8 @@ import PasswordWidget from '../../forms/widgets/password';
 
 export const schema: JSONSchema6 = {
   type: 'object',
-  required: ['email', 'password'],
+  required: ['password'],
   properties: {
-    email: {
-      type: 'string',
-      title: 'Email',
-    },
     password: {
       type: 'string',
       title: 'Password',
@@ -21,11 +17,11 @@ export const schema: JSONSchema6 = {
 
 export const uiSchema: UiSchema = {
   'ui:ObjectFieldTemplate': CustomObjectFieldTemplate,
-  email: {
-    'ui:FieldTemplate': CustomInputFieldTemplate,
-  },
   password: {
     'ui:FieldTemplate': CustomInputFieldTemplate,
     'ui:widget': PasswordWidget,
+    'ui:options': {
+      showValidation: true,
+    },
   },
 };

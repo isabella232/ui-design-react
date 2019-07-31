@@ -22,7 +22,7 @@ function DropdownEllipsis({ children }: Props) {
   const classes = classNames(styles.materialIcons, 'material-icons-outlined');
   return (
     <Dropdown>
-      <Dropdown.Toggle as={CustomDropdown} id="ellipsis-dropdown">
+      <Dropdown.Toggle as={CustomDropdown as any} id="ellipsis-dropdown">
         <span className={classes}>more_horiz</span>
       </Dropdown.Toggle>
       {children}

@@ -21,7 +21,7 @@ function PasswordValidation({ password, passwordPolicy }: Props) {
     const col = criteriaColumn.map(({ met, rule, text }) => {
       return (
         <small key={rule}>
-          <li className={classNames({ [styles.opacity30]: met })}>{text}</li>
+          <li className={classNames({ [styles.opacity30]: !met })}>{text}</li>
         </small>
       );
     });

@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { Nav } from 'react-bootstrap';
-import NavItem from 'react-bootstrap/lib/NavItem';
-import NavGroup from '../../compositions/nav-group';
-import NavLink from '../../compositions/nav-link';
+import { Nav, NavProps, NavItem } from 'react-bootstrap';
+import NavItemDropdown from './nav-item-dropdown';
+import NavItemLink from './nav-item-link';
+import { NavLinkProps } from 'react-bootstrap/NavLink';
 
-export class NavComponent extends React.Component<any> {
-  public static Item: typeof NavItem = Nav.Item;
-  public static Link: typeof NavLink = NavLink;
-  public static Group: typeof NavGroup = NavGroup;
-
-  public render() {
-    return <Nav {...this.props}>{this.props.children}</Nav>;
-  }
+function NavComponent(props: React.PropsWithChildren<NavProps> & NavProps) {
+  return <Nav {...props}>{props.children}</Nav>;
 }
+
+NavComponent.Item = NavItem;
+NavComponent.ItemDropdown = NavItemDropdown;
+NavComponent.ItemLink = NavItemLink;
+NavComponent.Link = (props: React.PropsWithChildren<NavLinkProps>) => (
+  <Nav.Link {...props}>{props.children}</Nav.Link>
+);
 
 export default NavComponent;

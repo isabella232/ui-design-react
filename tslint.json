@@ -18,27 +18,10 @@
     "no-implicit-dependencies": false,
     "no-empty": false,
     "no-empty-interface": false,
-    "no-submodule-imports": [
-      true,
-      "rxjs",
-      "@actions",
-      "@components",
-      "@compositions",
-      "@containers",
-      "@contexts",
-      "@forms",
-      "@pages",
-      "@reducers",
-      "@shared",
-      "&controllers",
-      "&helpers",
-      "&models",
-      "&services"
-    ],
+    "no-submodule-imports": [true],
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "object-literal-key-quotes": [true, "as-needed"],
-    "ordered-imports": false,
-    "semicolon": [true, "ignore-bound-class-methods"]
+    "ordered-imports": false
   },
   "rulesDirectory": []
 }

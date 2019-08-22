@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "baseUrl": "./src",
     "declaration": true,
-    "outDir": "./lib",
-    "baseUrl": "./",
     "jsx": "react",
     "lib": ["es5", "es6", "dom"],
+    "module": "commonjs",
     "noImplicitAny": true,
+    "outDir": "./lib",
     "sourceMap": true,
+    "target": "es5",
     "paths": {
-      "~ui-css": ["../saas/services/ui-design/dist/forgerock.css"]
+      "@components/*": ["components/*"],
+      "@compositions/*": ["compositions/*"]
     }
   },
   "include": ["src"],

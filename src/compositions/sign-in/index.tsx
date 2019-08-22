@@ -1,7 +1,7 @@
 import * as styles from '@forgerock/ui-design';
 import classNames from 'classnames';
 import * as React from 'react';
-import Form, { ISubmitEvent, IChangeEvent } from 'react-jsonschema-form';
+import Form, { ISubmitEvent } from 'react-jsonschema-form';
 import Alert from '../../components/alert';
 import Card from '../../components/card';
 import { schema, uiSchema } from '../../compositions/sign-in/schema';
@@ -37,7 +37,6 @@ function SignIn(props: Props) {
     logo,
     pending,
     title = 'Sign In',
-    onChange,
     onSubmit,
   } = props;
   const headerClasses = classNames(
@@ -65,7 +64,6 @@ function SignIn(props: Props) {
           transformErrors={transformErrors}
           uiSchema={uiSchema}
           widgets={{ BaseInput }}
-          onChange={(e: IChangeEvent<SignInModel>) => onChange && onChange(e.formData)}
           onSubmit={(e: ISubmitEvent<SignInModel>) => onSubmit(e.formData)}
         >
           <Submit

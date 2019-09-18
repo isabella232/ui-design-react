@@ -76,7 +76,7 @@ Input.Sync = ({ id, isPending, label, type, value, onChange, onButtonClick, tool
           />
         </Form.LabelGroupInput>
         <InputGroup.Append>
-          <OverlayTrigger overlay={<Tooltip id={`copy-tooltip-${id}`}>{tooltipMessage}</Tooltip>}>
+          <OverlayTrigger overlay={<Tooltip id={`sync-tooltip-${id}`}>{tooltipMessage}</Tooltip>}>
             {!isPending ? (
               <Button className={buttonClasses} onClick={onButtonClick}>
                 <i className={iconClasses}>sync</i>

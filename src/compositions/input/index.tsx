@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as styles from '@forgerock/ui-design';
-import {FormControlProps, InputGroup, OverlayTrigger, Spinner, Tooltip} from 'react-bootstrap';
+import { FormControlProps, InputGroup, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap';
 import { Form, Button } from '../../index';
 
 interface Props extends FormControlProps {

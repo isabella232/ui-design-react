@@ -14,7 +14,7 @@ interface Props extends FormControlProps {
 }
 
 interface TooltipProps {
-  tooltipMessage: string;
+  tooltipMessage?: string;
 }
 
 function Input({

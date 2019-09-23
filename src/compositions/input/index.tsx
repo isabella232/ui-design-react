@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import * as styles from '@forgerock/ui-design';
-import { FormControlProps, InputGroup, Spinner } from 'react-bootstrap';
+import { FormControlProps, InputGroup, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap';
 import { Form, Button } from '../../index';
 
 interface Props extends FormControlProps {
@@ -11,6 +11,10 @@ interface Props extends FormControlProps {
   isInvalid?: boolean;
   label: string;
   placeholder?: string;
+}
+
+interface TooltipProps {
+  tooltipMessage?: string;
 }
 
 function Input({
@@ -48,12 +52,12 @@ function Input({
   );
 }
 
-interface InputSyncProps extends Props {
+interface InputSyncProps extends Props, TooltipProps {
   isPending?: boolean;
   onButtonClick: () => void;
 }
 
-Input.Sync = ({ id, isPending, label, type, value, onChange, onButtonClick }: InputSyncProps) => {
+Input.Sync = ({ id, isPending, label, type, value, onChange, onButtonClick, tooltipMessage = 'Sync' }: InputSyncProps) => {
   const buttonClasses = classNames(styles.btn, styles.btnOutlineSecondary);
   const iconClasses = classNames(styles.materialIcons, 'material-icons-outlined');
   return (
@@ -72,22 +76,26 @@ Input.Sync = ({ id, isPending, label, type, value, onChange, onButtonClick }: In
           />
         </Form.LabelGroupInput>
         <InputGroup.Append>
-          {!isPending ? (
-            <Button className={buttonClasses} onClick={onButtonClick}>
-              <i className={iconClasses}>sync</i>
-            </Button>
-          ) : (
-            <Button className={buttonClasses} disabled={true} onClick={onButtonClick}>
-              <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
-            </Button>
-          )}
+          <OverlayTrigger overlay={<Tooltip id={`sync-tooltip-${id}`}>{tooltipMessage}</Tooltip>}>
+            {!isPending ? (
+              <Button className={buttonClasses} onClick={onButtonClick}>
+                <i className={iconClasses}>sync</i>
+              </Button>
+            ) : (
+              <Button className={buttonClasses} disabled={true} onClick={onButtonClick}>
+                <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+              </Button>
+            )}
+          </OverlayTrigger>
         </InputGroup.Append>
       </Form.LabelGroup>
     </Form.Group>
   );
 };
 
-Input.Copy = ({ id, label, type, value, onChange }: Props) => {
+interface InputCopyProps extends Props, TooltipProps {}
+
+Input.Copy = ({ id, label, type, value, onChange, tooltipMessage = 'Copy' }: InputCopyProps) => {
   const buttonClasses = classNames(styles.btn, styles.btnOutlineSecondary);
   const iconClasses = classNames(styles.materialIcons, 'material-icons-outlined');
   const ref: React.RefObject<HTMLInputElement> = React.createRef();
@@ -110,16 +118,18 @@ Input.Copy = ({ id, label, type, value, onChange }: Props) => {
           />
         </Form.LabelGroupInput>
         <InputGroup.Append>
-          <Button
-            className={buttonClasses}
-            onClick={() => {
-              ref.current.focus();
-              ref.current.select();
-              document.execCommand('copy');
-            }}
-          >
-            <i className={iconClasses}>file_copy</i>
-          </Button>
+          <OverlayTrigger overlay={<Tooltip id={`copy-tooltip-${id}`}>{tooltipMessage}</Tooltip>}>
+            <Button
+              className={buttonClasses}
+              onClick={() => {
+                ref.current.focus();
+                ref.current.select();
+                document.execCommand('copy');
+              }}
+            >
+              <i className={iconClasses}>file_copy</i>
+            </Button>
+          </OverlayTrigger>
         </InputGroup.Append>
       </Form.LabelGroup>
     </Form.Group>

@@ -1,6 +1,6 @@
 {
   "name": "@forgerock/ui-design-react",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "ForgeRock UI React Components",
   "main": "./lib/index.js",
   "files": [
